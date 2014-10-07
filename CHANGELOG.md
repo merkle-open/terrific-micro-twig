@@ -1,3 +1,3 @@
 # Changelog - Terrific Micro Twig
 
-## v1.0 - 2014-10-06 - first version
+## v1.0 - 2014-10-07 - first version

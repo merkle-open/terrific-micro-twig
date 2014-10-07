@@ -27,17 +27,17 @@ You need:
 
 Include the twig main file into your project (file: `project/index.project.php`)
 
-    require_once(dirname(__FILE__) . '/extensions/terrific-micro-twig/twig.inc.php');
+    require_once(__DIR__ . '/extensions/terrific-micro-twig/twig.inc.php');
 
 ## Configuration
 
 There's nothing to configure. Terrific Micro will now throw your templates into the Twig rendering engine. 
 Any Twig errors will be reported on the view.
 
-But maybe you want to configure Terrific Micro to handle View-Files with the Extension `.twig`. 
+But maybe you want to configure Terrific Micro to handle view files with the file extension `twig`. 
 Do this in `config.json`:
 
-    "micro" -> "view_file_extension" : "html.twig"
+    "micro" -> "view_file_extension" : "twig"
 
 ## Additional add-ons
 
