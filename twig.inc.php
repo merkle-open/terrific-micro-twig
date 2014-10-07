@@ -6,7 +6,7 @@ Twig_Autoloader::register();
 
 // setup twig environment
 $loader = new Twig_Loader_Filesystem(BASE . $config->micro->view_directory);
-$loader->addPath(BASE . 'project/extensions/twig/templates');
+$loader->addPath(__DIR__ . '/templates');
 $loader->addPath(BASE . $config->micro->view_partials_directory);
 foreach ( $config->micro->components as $key => $component ) {
 	$loader->addPath(BASE . $component->path);
