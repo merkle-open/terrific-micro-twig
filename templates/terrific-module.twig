@@ -1,0 +1,49 @@
+{#
+    Renders terrific modules.
+
+    @param name {String} name of the module
+    @param view {String} name of the view to render (without html.twig suffix) [optional]
+    @param skins {Array} contains the skins to apply [optional]
+    @param connectors {Array} contains the channel ids to connect to [optional]
+    @param attrs {Object} contains the additional html attributes for the module [optional]
+    @param data {Object} contains the data to pass to embedded controllers [optional]
+#}
+{% macro module(name, view, skins, connectors, attrs, data) %}
+
+{# validate params #}
+{% set name = (name) | default('Default') %}
+{% set view = (view) | default(name | lower) %}
+{% set skins = skins | default([]) %}
+{% set connectors = connectors | default([]) %}
+{% set attrs = attrs | default({}) %}
+{% set data = data | default({}) %}
+
+<{{attrs.tag|default('div')}}
+class="mod {# specific mod#}{{ 'mod-' ~ (name | dash) }}{# end specific mod #}{# skins #}{% for skin in skins %}{{ ' skin-' ~ (name | dash) ~ '-' ~ (skin | dash) }}{% endfor %}{# end skins #}{# additional class(es) #}{% if attrs.class is defined %}{{ ' ' ~ attrs.class }}{% endif %}{# end additional class(es) #}"
+
+{# connectors #}
+{% if connectors|length > 0 %}
+data-connectors="{% for connector in connectors %}{% if loop.index == 1 %}{{ connector }}{% else %}{{ ',' ~ connector }}{% endif %}{% endfor %}"
+{% endif %}
+
+{# additional attrs (exception class attribute) #}
+{% for attr, value in attrs %}
+    {% if attr != 'class' and attr != 'tag' %}
+        {{ (attr ~ '="' ~ value ~ '"') | raw }}
+    {% endif %}
+{% endfor %}
+
+{# composer attributes #}
+data-composer-template="{{ view }}"
+>
+
+{# include / render the appropriate module view #}
+{% set viewname = name|lower ~ '-' ~ view %}
+{% if name|lower == view %}
+    {% set viewname = view %}
+{% endif %}
+{% include name ~ '/' ~ viewname ~ '.' ~ view_file_extension|default('html') with data %}
+{# end include #}
+
+</{{attrs.tag|default('div')}}>
+{% endmacro %}
