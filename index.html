@@ -65,7 +65,7 @@ git clone https://github.com/namics/terrific-micro-twig.git
 
 <p>Include the twig main file into your project (file: <code>project/index.project.php</code>)</p>
 
-<pre><code>require_once(dirname(__FILE__) . '/extensions/terrific-micro-twig/twig.inc.php');
+<pre><code>require_once(__DIR__ . '/extensions/terrific-micro-twig/twig.inc.php');
 </code></pre>
 
 <h2>
@@ -74,10 +74,10 @@ git clone https://github.com/namics/terrific-micro-twig.git
 <p>There's nothing to configure. Terrific Micro will now throw your templates into the Twig rendering engine. 
 Any Twig errors will be reported on the view.</p>
 
-<p>But maybe you want to configure Terrific Micro to handle View-Files with the Extension <code>.twig</code>. 
+<p>But maybe you want to configure Terrific Micro to handle view files with the file extension <code>twig</code>. 
 Do this in <code>config.json</code>:</p>
 
-<pre><code>"micro" -&gt; "view_file_extension" : "html.twig"
+<pre><code>"micro" -&gt; "view_file_extension" : "twig"
 </code></pre>
 
 <h2>
