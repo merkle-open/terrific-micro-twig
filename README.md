@@ -22,6 +22,7 @@ You need:
 
         cd project/extensions
         git clone https://github.com/namics/terrific-micro-twig.git
+        rm -rf terrific-micro-twig/.git
 
 ## Usage
 
